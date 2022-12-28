@@ -1,0 +1,135 @@
+1.Soru
+char findMostFrequentChar(String str) {
+    // Sayaç dizisini oluşturun ve her harf için bir sayaç oluşturun
+    int[] charCount = new int[256];
+    for (int i = 0; i < str.length(); i++) {
+        charCount[str.charAt(i)]++;
+    }
+
+    // En sık tekrar eden harfi bulun
+    int max = 0;
+    char mostFrequentChar = ' ';
+    for (int i = 0; i < charCount.length; i++) {
+        if (charCount[i] > max) {
+            max = charCount[i];
+            mostFrequentChar = (char) i;
+        }
+    }
+
+    return mostFrequentChar;
+}
+char c = findMostFrequentChar("hello world"); // c = 'l'
+
+
+2.Soru
+int findMedianRecursive(int[] arr) {
+    // Dizinin uzunluğunu bulun
+    int length = arr.length;
+
+    // Dizinin uzunluğu 1'e eşit olduğunda döngüyü durdurun
+    if (length == 1) {
+        return arr[0];
+    }
+
+    // Yeni dizi oluşturun ve her seviyede ardışık terimlerin ortancasını alın
+    int[] newArr = new int[length / 2];
+    for (int i = 0; i < length; i += 2) {
+        int median1 = arr[i];
+        int median2 = arr[i + 1];
+        newArr[i / 2] = (median1 + median2) / 2;
+    }
+
+    // Yeni diziyi recursive olarak çağırın
+    return findMedianRecursive(newArr);
+}
+int median = findMedianRecursive([4, 12, 16, 8, 20, 24]); // median = 16
+
+3.Soru
+
+public class Insan {
+    // Özellikler
+    private String ad;
+    private String soyad;
+    private int dogumYili;
+    private int yas;
+
+    // Constructor
+    public Insan(String ad, String soyad, int dogumYili) {
+        this.ad = ad;
+        this.soyad = soyad;
+        this.dogumYili = dogumYili;
+        this.yas = 2022 - dogumYili; // Yılı güncellemeyin, sadece yaşı hesaplayın
+    }
+
+    // Getter ve setter
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getSoyad() {
+        return soyad;
+    }
+
+    public void setSoyad(String soyad) {
+        this.soyad = soyad;
+    }
+
+    public int getDogumYili() {
+        return dogumYili;
+    }
+
+    public void setDogumYili(int dogumYili) {
+        this.dogumYili = dogumYili;
+    }
+
+    public int getYas() {
+        return yas;
+    }
+
+    // Yıl değişkenini tutun
+    private static int yil = 2022;
+
+    // Yılı arttırın ve otomatik olarak tecrübe ve yaşı güncelleyin
+    public static void yilArttir() {
+        yil++;
+    }
+
+    // Tecrübe ve yaşı yıla göre hesaplayın
+    public void tecrubeVeYasHesapla() {
+        yas = yil - dogumYili;
+    }
+
+    // Nesnenin içeriğini ekrana yazdırın
+    public void bilgi() {
+        System.out.println("Ad: " + ad);
+        System.out.println("Soyad: " + soyad);
+        System.out.println("Doğum Yılı: " + dogumYili);
+        System.out.println("Yaş: " + yas);
+    }
+}
+public class Muhendis extends Insan {
+    // Özellikler
+    private String muhendislikAlan;
+    private String uzmanlikAlan;
+    private int meslekBaslamaYili;
+    private int tecrube;
+    private int maas;
+
+    // Constructor
+    public Muhendis(String ad, String soyad, int dogumYili, String muhendislikAlan, String uzmanlikAlan, int meslekBaslamaYili, int tecrube, int maas) {
+        super(ad, soyad,dogumYili);
+         this.branch = branch;
+    this.muhendislikAlan = muhendislikAlan;
+    this.uzmanlikAlan = uzmanlikAlan;
+    this.salary = salary;
+    this.meslekBaslamaYili = meslekBaslamaYili;
+    this.tecrube=tecrube;
+    this.maas=maas;
+    
+  }
+}
+
