@@ -1,0 +1,160 @@
+public class DiziHesap {
+    double Hesap(int[] arr) {
+        double ortalama = 0;
+        // Dizinin uzunluğunu bulun
+        int length = arr.length;
+
+        // Dizinin uzunluğu 1'e eşit olduğunda döngüyü durdurun
+        if (length == 1) {
+            return arr[0];
+        }
+
+        // Yeni dizi oluşturun ve her seviyede ardışık terimlerin ortancasını alın
+        int[] newArr = new int[length / 2];
+        for (int i = 0; i < length; i += 2) {
+            int median1 = arr[i];
+            int median2 = arr[i + 1];
+            newArr[i / 2] = (median1 + median2) / 2;
+        }
+
+        // Yeni dizinin ortalamasını Mean fonksiyonu ile hesaplayın ve geri döndürün
+        return Mean(newArr);
+    }
+
+    double Mean(int[] arr) {
+        // Dizinin toplamını bulun
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+
+        // Dizinin ortalamasını geri döndürün
+        return (double) sum / arr.length;
+
+
+    }
+
+    double[] ortalama = {8,10,12,14,16,20,24,28,40};
+}
+
+--------------------------------------------------------------------------------------------------------------------
+public class EnCokTekrar {
+    char encoktekraredenharf(String str) {
+        // Sayaç dizisini oluşturun ve her harf için bir sayaç oluşturun
+        int[] harfhesap = new int[256];
+        for (int i = 0; i < str.length(); i++) {
+            harfhesap[str.charAt(i)]++;
+        }
+
+        // En sık tekrar eden harfi bulun
+        int max = 0;
+        char mostFrequentChar = ' ';
+        for (int i = 0; i < harfhesap.length; i++) {
+            if (harfhesap[i] > max) {
+                max = harfhesap[i];
+                mostFrequentChar = (char) i;
+            }
+        }
+
+        return mostFrequentChar;
+    }
+    char c = encoktekraredenharf("Aykan Sezer"); // c = 'l'
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+public class Insan {
+    // Özellikler
+    public String ad;
+    public String soyad;
+    public int dogumYili;
+    public int yas;
+
+    // Constructor
+    public Insan(String ad, String soyad, int dogumYili) {
+        this.ad = ad;
+        this.soyad = soyad;
+        this.dogumYili = dogumYili;
+        this.yas = 2023 - dogumYili; // Yılı güncellemeyin, sadece yaşı hesaplayın
+    }
+
+    // Getter ve setter
+    public String getAd() {
+        return ad;
+    }
+
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getSoyad() {
+        return soyad;
+    }
+
+    public void setSoyad(String soyad) {
+        this.soyad = soyad;
+    }
+
+    public int getDogumYili() {
+        return dogumYili;
+    }
+
+    public void setDogumYili(int dogumYili) {
+        this.dogumYili = dogumYili;
+    }
+
+    public int getYas() {
+        return yas;
+    }
+
+    // Yıl değişkenini tutun
+    private static int yil = 2023;
+
+    // Yılı arttırın ve otomatik olarak tecrübe ve yaşı güncelleyin
+    public static void yilArttir() {
+        yil++;
+    }
+
+    // Tecrübe ve yaşı yıla göre hesaplayın
+    public void tecrubeVeYasHesapla() {
+        yas = yil - dogumYili;
+    }
+
+    // Nesnenin içeriğini ekrana yazdırın
+    public void bilgi() {
+        System.out.println("Ad: " + ad);
+        System.out.println("Soyad: " + soyad);
+        System.out.println("Doğum Yılı: " + dogumYili);
+        System.out.println("Yaş: " + yas);
+    }
+}
+
+-----
+
+public class Muhendis extends Insan {
+    // Özellikler
+    private String muhendislikAlan;
+    private String uzmanlikAlan;
+    private int meslekBaslamaYili;
+    private int tecrube;
+    private int maas;
+
+    // Constructor
+    public Muhendis(String ad, String soyad, int dogumYili, String muhendislikAlan, String uzmanlikAlan, int meslekBaslamaYili, int tecrube, int maas) {
+     super(ad,soyad,dogumYili);
+     this.muhendislikAlan=muhendislikAlan;
+     this.uzmanlikAlan=uzmanlikAlan;
+     this.meslekBaslamaYili=meslekBaslamaYili;
+     this.tecrube=tecrube;
+     this.maas=maas;
+    }
+    public void bilgi() {
+        System.out.println("Ad: " + ad);
+        System.out.println("Soyad: " + soyad);
+        System.out.println("Doğum Yılı: " + dogumYili);
+        System.out.println("Yaş: " + yas);
+        System.out.println("Mühendislik Alanı: " + muhendislikAlan);
+
+
+}
+}
